@@ -14,9 +14,9 @@ response = ''
 
 # creating the instance of our flask application
 app = Flask(__name__)
-UPLOAD_FOLDER_ENROLL = 'data/wav/enroll'
-UPLOAD_FOLDER_TEST = 'data/wav/test'
-app.config["DEBUG"] = True
+UPLOAD_FOLDER_ENROLL = '/home/amnecarespeaker/amnecare-speaker-recognition/data/wav/enroll'
+UPLOAD_FOLDER_TEST = '/home/amnecarespeaker/amnecare-speaker-recognition/data/wav/test'
+#app.config["DEBUG"] = True
 app.config['UPLOAD_FOLDER_TEST'] = UPLOAD_FOLDER_TEST
 app.config['UPLOAD_FOLDER_ENROLL'] = UPLOAD_FOLDER_ENROLL
 parsedPathTest = 'data/wav/test/'
@@ -25,7 +25,7 @@ parsedPathEnroll = 'data/wav/enroll/'
 
 @app.route('/getList', methods=['GET'])
 def get_list_users():
-    with open('cfg/enroll_list.csv') as file:
+    with open('/home/amnecarespeaker/amnecare-speaker-recognition/cfg/enroll_list.csv') as file:
         data = csv.reader(file, delimiter=',')
         first_line = True
         speakers = []
@@ -56,7 +56,7 @@ def identify_speaker():
             file.save(os.path.join(app.config['UPLOAD_FOLDER_TEST'], filename))
             path = parsedPathTest + filename
             name = filename.split(".", 1)[0]
-            with open('cfg/test_list.csv', mode='w') as file:
+            with open('/home/amnecarespeaker/amnecare-speaker-recognition/cfg/test_list.csv', mode='w') as file:
                 writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
                 # way to write to csv file
@@ -92,7 +92,7 @@ def add_speaker():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER_ENROLL'], filename))
             path = parsedPathEnroll + filename
-            with open('cfg/enroll_list.csv', 'r+', newline='') as file:
+            with open('/home/amnecarespeaker/amnecare-speaker-recognition/cfg/enroll_list.csv', 'r+', newline='') as file:
                 csv_reader = csv.reader(file, delimiter=",", lineterminator='\n')
                 for row in csv_reader:
                     if row == null:
