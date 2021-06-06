@@ -1,11 +1,11 @@
 import scipy.io as sio
 import numpy as np
-import keras.backend as K
-from keras.layers import Input, GlobalAveragePooling2D, Reshape
-from keras.layers.convolutional import Conv2D, ZeroPadding2D, MaxPooling2D, AveragePooling2D
-from keras.layers.normalization import BatchNormalization
-from keras.layers.core import Lambda, Activation
-from keras.models import Model
+import tensorflow.python.keras.backend as K
+from tensorflow.python.keras.layers import Input, GlobalAveragePooling2D, Reshape
+from tensorflow.python.keras.layers.convolutional import Conv2D, ZeroPadding2D, MaxPooling2D, AveragePooling2D
+from tensorflow.python.keras.layers.normalization import BatchNormalization
+from tensorflow.python.keras.layers.core import Lambda, Activation
+from tensorflow.python.keras.models import Model
 
 import constants as c
 
